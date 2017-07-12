@@ -15,7 +15,7 @@
 - 코딩설명
   
   + scanD
-  ~~
+  '''
   def createD(dataSet): # 해당 함수는 연관분석을 하기 전, 엑셀파일에서 읽어온 데이터를 불변집합(frozenset)으로 만들기 위한 함수입니다.
     array = []      # 인자로 넘겨받는 dataSet의 형식은 List 형식입니다.(ex : [
     for trans in dataSet:
@@ -25,7 +25,7 @@
     array.sort()
 
     return map(frozenset,array)
-  ~~
+  '''
 
 
 ## KNN.py
