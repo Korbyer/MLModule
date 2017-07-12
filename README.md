@@ -13,7 +13,9 @@
   + 규칙을 어떤 기준에 얽매이지 않고 세우기 때문에 로또의 자동번호추첨기의 성격과 비슷하게 만들어 낼 수 있는 것이다.
   
 - 코딩설명
+
     + createD : 연관분석을 시작하기 전, 인자로 받은 dataSet에 대한 전처리가 이루어 지도록 하는 함수이다. 이 함수를 통해 반환되는 배열은 불가변이 된다.
+    
 ```  
   def createD(dataSet):  # 인자로 받는 dataSet 의 형식은 List 형식이다.
     array = [] 
@@ -26,7 +28,8 @@
     return map(frozenset,array)
 ```
 
-    + scanData : 각 번호(1~45)에 대한 지지도(1등당첨에 얼마나 참여했는지) 를 계산해주는 함수이다.
+    + scanData : 각 번호(1~45)에 대한 지지도(1등당첨에 얼마나 참여했는지) 를 계산해주는 함수이다.
+    
 ```
 def scanData(data, ck, minSupport):
     group = {}
