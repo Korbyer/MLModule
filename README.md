@@ -27,7 +27,6 @@
 
     return map(frozenset,array)
 ```
-
     + scanData : 각 번호(1~45)에 대한 지지도(1등당첨에 얼마나 참여했는지) 를 계산해주는 함수이다.
     
 ```
