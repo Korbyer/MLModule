@@ -57,6 +57,38 @@ def scanData(data, ck, minSupport):
     
 ```
 
+   + GenApriori : returnList 에 넣을 핵심 데이터들을 가지치기하여 구하는 함수이다. 여기서 핵심데이터는 특정 지지도 이상의 데이터들만을 이야기한다. 즉, 당첨횟수가 가장 많고, 연관있는 숫자들끼리 묶어서 해당 집합의 연관성 정도까지 정보를 담아서 합해주는 것이다. 
+```
+def GenApriori(data, k):
+    returnList = []
+    lenData = len(data)
+    for i in range(lenData):
+        for j in range(i + 1, lenData):
+            List1 = list(data[i])[:k - 2];List2 = list(data[j])[:k - 2]
+            List1.sort();List2.sort()
+            if List1 == List2:
+                returnList.append(data[i] | data[j])
+    return returnList
+```
+
+   + Apriori : 지금까지 작성했던 위의 모든 함수들의 기능을 넣어 실제로 수행되는 함수이다. 여기서 핵심은 87번째 이다. 최종적으로 최소 지지도를 만족하는 빈발아이템의 집합을 찾아내어 집합을 다시 만들어 사용자에게 해당 *아이템의 지지도* 와 *아이템 구성* 들을 리턴시켜주는 함수이다. 
+```
+def apriori(data,minSupport=0.18):
+    C = createD(data)
+    D = map(set, data)
+    List1, supportData = scanData(D, C, minSupport)
+    L = [List1]
+    k = 2
+    while (len(L[k - 2]) > 0):
+        Ck = GenApriori(L[k - 2], k)
+
+        Lk, supK = scanData(D, Ck, minSupport)
+        supportData.update(supK)
+        L.append(Lk)
+        k += 1
+    return L, supportData
+```
+
 ## KNN.py
 
 머신러닝 기법 중 하나인 K-NN 머신러닝의 알고리즘의 원리를 기반으로 만든 파일입니다. 현재 가장 핵심적인 기능을 담당할 연관분석 기능 구현에 충실하기 위해 해당 파일은 아직 만들어지지 않았습니다. 추후에 계속 개발할 예정입니다.
