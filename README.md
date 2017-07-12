@@ -13,21 +13,19 @@
   + 규칙을 어떤 기준에 얽매이지 않고 세우기 때문에 로또의 자동번호추첨기의 성격과 비슷하게 만들어 낼 수 있는 것이다.
   
 - 코딩설명
-  
-  + scanD
-  
-  ```c
-  def createD(dataSet): 
-    array = []      
-    for trans in dataSet:
+
+  + createD
+```  
+  def createD(dataSet):
+    array = []
+    for trans in dataSet:
         for number in trans:
             if not [number] in array:
                 array.append([number])
     array.sort()
 
     return map(frozenset,array)
-  ```
-
+```
 
 ## KNN.py
 
