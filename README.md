@@ -56,7 +56,7 @@ def scanData(data, ck, minSupport):
     return returnList,supportData
     
 ```
-    + GenApriori : returnList 에 넣을 핵심 데이터들을 가지치기하여 구하는 함수이다. 여기서 핵심데이터는 특정 지지도 이상의 데이터들만을 이야기한다. 즉, 당첨횟수가 가장 많고, 연관있는 숫자들끼리 묶어서 해당 집합의 연관성 정도까지 정보를 담아서 합해주는 것이다. 
+   + GenApriori : returnList 에 넣을 핵심 데이터들을 가지치기하여 구하는 함수이다. 여기서 핵심데이터는 특정 지지도 이상의 데이터들만을 이야기한다. 즉, 당첨횟수가 가장 많고, 연관있는 숫자들끼리 묶어서 해당 집합의 연관성 정도까지 정보를 담아서 합해주는 것이다. 
 ```
 def GenApriori(data, k):
     returnList = []
@@ -69,7 +69,7 @@ def GenApriori(data, k):
                 returnList.append(data[i] | data[j])
     return returnList
 ```
-    + Apriori : 지금까지 작성했던 위의 모든 함수들의 기능을 넣어 실제로 수행되는 함수이다. 여기서 핵심은 87번째 이다. 최종적으로 최소 지지도를 만족하는 빈발아이템의 집합을 찾아내어 집합을 다시 만들어 사용자에게 해당 *아이템의 지지도* 와 *아이템 구성* 들을 리턴시켜주는 함수이다. 
+   + Apriori : 지금까지 작성했던 위의 모든 함수들의 기능을 넣어 실제로 수행되는 함수이다. 여기서 핵심은 87번째 이다. 최종적으로 최소 지지도를 만족하는 빈발아이템의 집합을 찾아내어 집합을 다시 만들어 사용자에게 해당 *아이템의 지지도* 와 *아이템 구성* 들을 리턴시켜주는 함수이다. 
 ```
 def apriori(data,minSupport=0.18):
     C = createD(data)
