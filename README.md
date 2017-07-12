@@ -14,17 +14,44 @@
   
 - 코딩설명
 
-  + createD
+  + createD : 연관분석을 시작하기 전, 인자로 받은 dataSet에 대한 전처리가 이루어 지도록 하는 함수이다.
 ```  
-  def createD(dataSet):
-    array = []
-    for trans in dataSet:
-        for number in trans:
+  def createD(dataSet):  # 인자로 받는 dataSet 의 형식은 List 형식이다.
+    array = [] 
+    for trans in dataSet: 
+        for number in trans:
             if not [number] in array:
                 array.append([number])
     array.sort()
 
     return map(frozenset,array)
+```
+
+  + scanData
+```
+def scanData(data, ck, minSupport):
+    group = {}
+    sk=list(ck)
+    numOfItems=0
+    print(ck)
+    for item in data:
+        numOfItems+=1
+        for map in sk:
+            if map.issubset(item):
+                if map not in group:
+                    group[map] = 1
+                else:
+                    group[map] += 1
+
+    returnList = []
+    supportData = {}
+    for key, value in group.items():
+        support = value / numOfItems
+        if support >= minSupport:
+            returnList.insert(0, key)
+        supportData[key] = support
+    return returnList,supportData
+    
 ```
 
 ## KNN.py
